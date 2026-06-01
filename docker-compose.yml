@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # Primary Credit Risk application engine
+  credit_risk_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit_risk_container
+    volumes:
+      # Local dataset mounting - ensures heavy CSVs stay on host disk & out of Git
+      - ./data:/data
+      # Serialized ML artifacts volume
+      - ./models:/models
+      # Mount notebook configuration for interactive runs
+      - ./notebooks:/app/notebooks
+    environment:
+      - ENVIRONMENT=docker
+      - LOG_LEVEL=INFO
+      - DATA_DIR=/data
+      - MODELS_DIR=/models
+      - DATABASE_URL=sqlite:///data/credit_risk.db
+      - GROQ_API_KEY=your_groq_api_key_here
+    ports:
+      - "8501:8501" # Streamlit UI Mapping
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
