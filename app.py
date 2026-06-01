@@ -58,6 +58,14 @@ st.markdown("""
         color: #059669;
         font-weight: bold;
     }
+    .flagship-banner {
+        background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -112,7 +120,7 @@ st.sidebar.title("NEOSTATS Intelligence")
 st.sidebar.subheader("Credit Risk Platform")
 menu = st.sidebar.radio(
     "Navigation Menu",
-    ["📊 Overview & EDA", "💳 Risk Scoring & XAI", "📋 Policy Decision Rules", "💬 Talk-to-Data Chatbot", "📈 Model Diagnostics & Retraining"]
+    ["💬 Talk-to-Data Chatbot", "📊 Overview & EDA", "💳 Risk Scoring & XAI", "📋 Policy Decision Rules", "📈 Model Diagnostics & Retraining"]
 )
 
 st.sidebar.divider()
@@ -460,8 +468,13 @@ elif menu == "📋 Policy Decision Rules":
 
 # --- MODULE 5: TALK-TO-DATA conversatIONAL AI ---
 elif menu == "💬 Talk-to-Data Chatbot":
-    st.markdown("<div class='main-title'>💬 Conversational Talk-to-Data Chatbot</div>", unsafe_allow_html=True)
-    st.markdown("<div class='sub-title'>Ask analytical credit questions in plain English, and watch them convert to optimized SQL queries running against our relational SQLite database!</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='flagship-banner'>
+        <span style='background: rgba(255,255,255,0.25); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase;'>Flagship AI Feature</span>
+        <h2 style='margin-top: 0.5rem; color: white; font-weight: 800; font-size: 1.8rem;'>💬 Conversational Talk-to-Data Intelligence</h2>
+        <p style='margin-bottom: 0; color: #E0F2FE;'>Ask analytical credit questions in plain English, and watch them convert to optimized SQL queries running against our relational SQLite database in real-time!</p>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.subheader("💡 5 Ready-To-Test Query Templates")
     col_q1, col_q2 = st.columns(2)
